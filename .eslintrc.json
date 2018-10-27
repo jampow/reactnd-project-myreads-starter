@@ -12,6 +12,7 @@
     "camelcase": "error",
     "curly": "error",
     "jsx": "prefer-single",
+    "react/no-unescaped-entities": ["never"],
     "no-unused-expressions": ["error", {
       "allowShortCircuit": true,
       "allowTernary": true,
