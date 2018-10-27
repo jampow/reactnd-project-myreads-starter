@@ -2,16 +2,16 @@ import React from 'react';
 import Book from '../components/Book';
 import PropTypes from 'prop-types';
 
-const BookShelf = ({ shelfName, books }) => (
+const BookShelf = ({ title, books }) => (
   <div className="bookshelf">
-    <h2 className="bookshelf-title">{shelfName}</h2>
+    <h2 className="bookshelf-title">{title}</h2>
     <div className="bookshelf-books">
       <ol className="books-grid">
         {books.map((book, i) => (
           <li key={i}>
             <Book
               id={book.id}
-              author={book.author}
+              authors={book.authors}
               title={book.title}
             />
           </li>
@@ -22,10 +22,10 @@ const BookShelf = ({ shelfName, books }) => (
 );
 
 BookShelf.propTypes = {
-  shelfName: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   books: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
+    authors: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired
   }))
 };
