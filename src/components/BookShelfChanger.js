@@ -19,7 +19,7 @@ const BookShelfChanger = ({ shelfsList, selected }) => (
 
 BookShelfChanger.propTypes = {
   shelfsList: PropTypes.objectOf(PropTypes.string).isRequired,
-  selected: PropTypes.bool
+  selected: PropTypes.string
 };
 
 export default BookShelfChanger;

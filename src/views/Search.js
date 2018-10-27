@@ -20,12 +20,17 @@ class Search extends React.Component {
       books = await search(value);
     } catch(error) {
       // TODO: display error
+      console.log('error', error);
     }
-    console.log('books', books);
 
     if (!books.hasOwnProperty('error')) {
       this.setState({ books });
     }
+  }
+
+  whichShelfIsThisBook = bookId => {
+    const book = this.props.books.find(book => book.id === bookId);
+    return book ? book.shelf : null;
   }
 
   render() {
@@ -47,7 +52,7 @@ class Search extends React.Component {
                 title={book.title}
                 authors={book.authors}
                 shelfsList={shelfs}
-                shelfName={book.shelf}
+                shelfName={this.whichShelfIsThisBook(book.id)}
                 key={book.id}/>
             ))}
           </ol>
@@ -58,7 +63,14 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  shelfs: PropTypes.objectOf(PropTypes.string).isRequired
+  shelfs: PropTypes.objectOf(PropTypes.string).isRequired,
+  books: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    shelf: PropTypes.string
+  })).isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default Search;

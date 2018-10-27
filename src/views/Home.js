@@ -46,8 +46,9 @@ Home.propTypes = {
   books: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    authors: PropTypes.arrayOf(PropTypes.string).isRequired
-  })),
+    authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    shelf: PropTypes.string
+  })).isRequired,
   loading: PropTypes.bool.isRequired
 };
 
