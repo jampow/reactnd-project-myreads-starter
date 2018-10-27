@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "extends": "plugin:react/recommended",
+  "rules": {
+    "strict": 0,
+    "no-trailing-spaces": [
+      2, { "skipBlankLines": false }
+    ],
+    "indent": ["error", 2],
+    "semi": ["error", "always"],
+    "no-multi-str": "error",
+    "camelcase": "error",
+    "curly": "error",
+    "jsx": "prefer-single",
+    "no-unused-expressions": ["error", {
+      "allowShortCircuit": true,
+      "allowTernary": true,
+      "allowTaggedTemplates": true
+    }]
+  }
+
+}
