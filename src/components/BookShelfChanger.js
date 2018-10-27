@@ -3,23 +3,22 @@ import PropTypes from 'prop-types';
 
 const BookShelfChanger = ({ shelfsList, selected }) => (
   <div className="book-shelf-changer">
-    <select>
+    <select defaultValue={selected || 'none'}>
       <option value="move" disabled>Move to...</option>
       { Object.keys(shelfsList).map(shelf => (
         <option
           key={shelf}
-          value={shelf}
-          selected={selected === shelf}>
+          value={shelf}>
           {shelfsList[shelf]}
         </option>
       ))}
-      <option value="none" selected={!selected}>None</option>
+      <option value="none">None</option>
     </select>
   </div>
 );
 
 BookShelfChanger.propTypes = {
-  shelfsList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  shelfsList: PropTypes.objectOf(PropTypes.string).isRequired,
   selected: PropTypes.bool
 };
 

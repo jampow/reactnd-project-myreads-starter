@@ -3,7 +3,7 @@ import BookShelfChanger from './BookShelfChanger';
 import PropTypes from 'prop-types';
 import BookCover from './BookCover';
 
-const Book = ({ title, authors, id, shelfsList, shelfName }) => (
+const Book = ({ title, authors = [], id, shelfsList, shelfName }) => (
   <div className="book">
     <div className="book-top">
       <BookCover id={id} />
@@ -19,7 +19,7 @@ const Book = ({ title, authors, id, shelfsList, shelfName }) => (
 Book.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.string),
   shelfsList: PropTypes.objectOf(PropTypes.string).isRequired,
   shelfName: PropTypes.string
 };
