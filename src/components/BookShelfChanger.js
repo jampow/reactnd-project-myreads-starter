@@ -1,15 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const BookShelfChanger = () => (
+const BookShelfChanger = ({ shelfsList, selected }) => (
   <div className="book-shelf-changer">
     <select>
       <option value="move" disabled>Move to...</option>
-      <option value="currentlyReading">Currently Reading</option>
-      <option value="wantToRead">Want to Read</option>
-      <option value="read">Read</option>
-      <option value="none">None</option>
+      { Object.keys(shelfsList).map(shelf => (
+        <option
+          key={shelf}
+          value={shelf}
+          selected={selected === shelf}>
+          {shelfsList[shelf]}
+        </option>
+      ))}
+      <option value="none" selected={!selected}>None</option>
     </select>
   </div>
 );
+
+BookShelfChanger.propTypes = {
+  shelfsList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selected: PropTypes.bool
+};
 
 export default BookShelfChanger;

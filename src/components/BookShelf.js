@@ -2,7 +2,7 @@ import React from 'react';
 import Book from '../components/Book';
 import PropTypes from 'prop-types';
 
-const BookShelf = ({ title, books }) => (
+const BookShelf = ({ title, books, shelfsList, shelfName }) => (
   <div className="bookshelf">
     <h2 className="bookshelf-title">{title}</h2>
     <div className="bookshelf-books">
@@ -13,6 +13,8 @@ const BookShelf = ({ title, books }) => (
               id={book.id}
               authors={book.authors}
               title={book.title}
+              shelfsList={shelfsList}
+              shelfName={shelfName}
             />
           </li>
         ))}
@@ -23,6 +25,8 @@ const BookShelf = ({ title, books }) => (
 
 BookShelf.propTypes = {
   title: PropTypes.string.isRequired,
+  shelfName: PropTypes.string.isRequired,
+  shelfsList: PropTypes.objectOf(PropTypes.string).isRequired,
   books: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     authors: PropTypes.arrayOf(PropTypes.string).isRequired,

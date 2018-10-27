@@ -24,6 +24,8 @@ class Home extends React.Component {
                     key={shelfName}
                     title={shelfs[shelfName]}
                     books={this.filterBooksOfShelf(books, shelfName)}
+                    shelfsList={shelfs}
+                    shelfName={shelfName}
                   />
                 ))}
               </div>
