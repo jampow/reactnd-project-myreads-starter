@@ -36,6 +36,12 @@ class BooksApp extends React.Component {
       }
 
       return { ...prev, books };
+    }, async () => {
+      try {
+        await BooksAPI.update(book, shelf)
+      } catch(err) {
+        console.log(err)
+      }
     })
   }
 
