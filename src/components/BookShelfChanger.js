@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BookShelfChanger = ({ shelfsList, selected }) => (
+const BookShelfChanger = ({ shelfsList, selected, onChange }) => (
   <div className="book-shelf-changer">
-    <select defaultValue={selected || 'none'}>
+    <select
+      defaultValue={selected || 'none'}
+      onChange={onChange}>
       <option value="move" disabled>Move to...</option>
       { Object.keys(shelfsList).map(shelf => (
         <option
@@ -19,7 +21,8 @@ const BookShelfChanger = ({ shelfsList, selected }) => (
 
 BookShelfChanger.propTypes = {
   shelfsList: PropTypes.objectOf(PropTypes.string).isRequired,
-  selected: PropTypes.string
+  selected: PropTypes.string,
+  onChange: PropTypes.func
 };
 
 export default BookShelfChanger;

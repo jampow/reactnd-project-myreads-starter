@@ -35,7 +35,7 @@ class Search extends React.Component {
 
   render() {
     const { books } = this.state;
-    const { shelfs } = this.props;
+    const { shelfs, putBookOnShelf } = this.props;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -53,6 +53,7 @@ class Search extends React.Component {
                 authors={book.authors}
                 shelfsList={shelfs}
                 shelfName={this.whichShelfIsThisBook(book.id)}
+                putBookOnShelf={putBookOnShelf}
                 key={book.id}/>
             ))}
           </ol>
@@ -70,7 +71,8 @@ Search.propTypes = {
     authors: PropTypes.arrayOf(PropTypes.string).isRequired,
     shelf: PropTypes.string
   })).isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  putBookOnShelf: PropTypes.func.isRequired
 };
 
 export default Search;

@@ -8,7 +8,7 @@ class Home extends React.Component {
   filterBooksOfShelf = (books, shelf) => books.filter(book => book.shelf === shelf)
 
   render() {
-    const { loading, books, shelfs } = this.props;
+    const { loading, books, shelfs, putBookOnShelf } = this.props;
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -26,6 +26,7 @@ class Home extends React.Component {
                     books={this.filterBooksOfShelf(books, shelfName)}
                     shelfsList={shelfs}
                     shelfName={shelfName}
+                    putBookOnShelf={putBookOnShelf}
                   />
                 ))}
               </div>
@@ -49,7 +50,8 @@ Home.propTypes = {
     authors: PropTypes.arrayOf(PropTypes.string).isRequired,
     shelf: PropTypes.string
   })).isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  putBookOnShelf: PropTypes.func.isRequired
 };
 
 export default Home;

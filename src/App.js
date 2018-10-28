@@ -1,9 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI'
 import './App.css';
 import Search from './views/Search';
 import Home from './views/Home';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class BooksApp extends React.Component {
   state = {
@@ -24,17 +24,36 @@ class BooksApp extends React.Component {
     })
   }
 
+  putBookOnShelf = (book, shelf) => {
+    this.setState(prev => {
+      const isUpdate = prev.books.find(b => b.id === book.id);
+      let books;
+
+      if (isUpdate) {
+        books = prev.books.map(b => b.id === book.id ? { ...b, shelf } : b);
+      } else {
+        books = [ ...prev.books, { ...book, shelf }];
+      }
+
+      return { ...prev, books };
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="app">
 
           <Route path="/" exact render={() => (
-            <Home {...this.state} />
+            <Home
+              {...this.state}
+              putBookOnShelf={this.putBookOnShelf} />
           )} />
 
           <Route path="/search" render={() => (
-            <Search {...this.state} />
+            <Search
+              {...this.state}
+              putBookOnShelf={this.putBookOnShelf} />
           )} />
 
         </div>
