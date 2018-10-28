@@ -27,9 +27,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint",
+      "pre-commit": "npm run lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "yarn e2e"
+      "pre-push": "npm run e2e"
     }
   }
 }
